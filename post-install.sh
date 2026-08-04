@@ -8,7 +8,7 @@ echo "Creating configuration directories..."
 
 mkdir -p "$HOME/.config"
 
-for dir in hypr waybar kitty nvim mako; do
+for dir in hypr kitty nvim; do
     ln -sfn "$SCRIPT_DIR/$dir" "$HOME/.config/$dir"
 done
 

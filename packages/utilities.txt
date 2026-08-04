@@ -4,3 +4,5 @@ grim
 slurp
 unzip
 zip
+bluez
+bluez-utils
