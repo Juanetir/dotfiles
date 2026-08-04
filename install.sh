@@ -1,24 +1,23 @@
 #!/bin/bash
 
-set -e
+set -euo pipefail
+
+if [[ $EUID -eq 0 ]]; then
+    echo "Do not run as root."
+    exit 1
+fi
+
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 echo "Installing packages..."
 
-sudo pacman -Syu --needed $(cat packages.txt)
+for file in "$SCRIPT_DIR"/packages/*.txt; do
+    echo "Installing $(basename "$file")..."
+    sudo pacman -S --needed - < "$file"
+done
 
-echo "Creating config directories..."
+echo "Running post-install..."
 
-mkdir -p ~/.config
+bash "$SCRIPT_DIR/post-install.sh"
 
-ln -sf ~/dotfiles/hypr ~/.config/hypr
-ln -sf ~/dotfiles/waybar ~/.config/waybar
-ln -sf ~/dotfiles/kitty ~/.config/kitty
-ln -sf ~/dotfiles/nvim ~/.config/nvim
-ln -sf ~/dotfiles/mako ~/.config/mako
-
-echo "Enabling services..."
-
-sudo systemctl enable NetworkManager
-sudo systemctl enable bluetooth
-
-echo "Installation finished!"
+echo "Installation complete!"

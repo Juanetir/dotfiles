@@ -1,0 +1,12 @@
+hyprland
+hyprpaper
+hyprlock
+hypridle
+waybar
+kitty
+mako
+wofi
+pipewire
+pipewire-pulse
+wireplumber
+xdg-desktop-portal-hyprland

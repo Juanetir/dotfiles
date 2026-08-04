@@ -1,0 +1,6 @@
+fastfetch
+wl-clipboard
+grim
+slurp
+unzip
+zip

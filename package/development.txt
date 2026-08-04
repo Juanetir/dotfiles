@@ -1,0 +1,7 @@
+neovim
+gcc
+clang
+cmake
+gdb
+python
+python-pip
