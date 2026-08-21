@@ -1,0 +1,23 @@
+format = """
+$os$username$directory$fill$git_status$git_branch
+$character
+"""
+
+[username]
+show_always = true
+format = "[](#d8c7ff)[ $user ](fg:#14141e bg:#d8c7ff)"
+
+[directory]
+format = "[](fg:#d8c7ff bg:#252536)[ $path ]($style)[](fg:#252536)"
+style = "fg:#d8c7ff bg:#252536 bold"
+
+[fill]
+symbol = " "
+
+[git_branch]
+symbol = "󰘬 "
+style = "fg:#14141e bg:#77cdd7 bold"
+format = "[](#77cdd7)[ $symbol$branch ]($style)[](#77cdd7)"
+
+[git_status]
+style = "fg:#d8c7ff"

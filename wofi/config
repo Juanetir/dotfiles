@@ -1,0 +1,11 @@
+lines=8
+show=drun
+allow_images=true
+image_size = 32
+matching=fuzzy
+
+prompt = Search...
+term=kitty
+
+width = 712
+

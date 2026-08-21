@@ -1,0 +1,35 @@
+#window {
+    border-radius: 18px;
+    border: 1px solid rgba(101,200,215, 0.2);
+    background-color: rgba(10, 20, 24, 0.4);
+}
+
+#input {
+    margin: 16px;
+    padding: 8px;
+    border-radius: 16px;
+}
+
+#entry {
+    padding: 2px;
+    margin: 2px;
+}
+#entry:selected {
+    border-radius: 8px;
+    border: none;
+    background-color: rgba(11,24, 22, 0.5);
+    font-weight: bold;
+}
+#entry:selected #text {
+    font-weight: bold;
+}
+
+#text {
+    font-size: 14px;
+    color: #d8f3f5;
+    font-weight: 500;
+}
+
+#img {
+    margin-right: 32px;
+}

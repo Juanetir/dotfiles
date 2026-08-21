@@ -1,13 +1,90 @@
 {
     "layer": "top",
     "position": "top",
+    "height": 30,
+
     "modules-left": [
-        "hyprland/workspaces"
+        "hyprland/workspaces",
+        "custom/wallpaper"
     ],
-    "modules-right": [
-        "network",
-        "pulseaudio",
-        "battery",
+
+    "modules-center": [
         "clock"
-    ]
+    ],
+
+    "modules-right": [
+        "group/system",
+        "group/controler"
+    ],
+    "group/system": {
+        "orientation": "horizontal",
+        "modules": [
+            "cpu",
+            "memory"
+        ]
+    },
+    "group/controler": {
+        "orientation": "horizontal",
+        "modules": [
+            "custom/volume",
+            "custom/wifi",
+            "battery"
+        ]
+    },
+    "hyprland/workspaces": {
+        "format": "{icon}",
+        "format-icons": {
+            "active": "●",
+            "default": "○",
+            "empty": "○"
+        },
+        "on-click": "activate"
+    },
+    "custom/wallpaper": {
+        "format": "󰸉",
+        "on-click": "quickshell ipc --path ~/dotfiles/quickshell/wallpaper call wallpaper toggle"
+    },
+    "cpu":{
+        "format": "CPU {usage}% "
+    },
+    "memory":
+    {
+        "format": "RAM {percentage}%"
+    },
+"custom/volume": {
+    "exec": "~/dotfiles/scripts/volume-icon.sh",
+    "return-type": "json",
+    "interval": 1,
+    "signal": 8
+},
+    "clock": {
+        "format": "{:%H:%M}",
+        "format-alt": "{:%A %d %B}"
+    },
+
+"custom/wifi": {
+    "exec": "~/dotfiles/scripts/wifi-icon.sh",
+    "return-type": "json",
+    "interval": 5
+},
+"battery": {
+    "format": "{icon} {capacity}%",
+    "format-icons": [
+        "󰂎",
+        "󰁺",
+        "󰁻",
+        "󰁼",
+        "󰁽",
+        "󰁾",
+        "󰁿",
+        "󰂀",
+        "󰂁",
+        "󰂂",
+        "󰁹"
+    ],
+    "states": {
+        "warning": 30,
+        "critical": 15
+    }
+}
 }

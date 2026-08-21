@@ -1,0 +1,120 @@
+* {
+    font-family: "Playpen Sans", "Noto Sans CJK JP", sans-serif;
+    font-weight: 500;
+}
+
+.control-center {
+    background: rgba(23, 18, 34, 0.93);
+    border-radius: 16px;
+    padding: 12px;
+}
+
+.control-center-list {
+    background: transparent;
+}
+
+.notification {
+    background: rgba(35, 40, 48, 0.1);
+    border: none;
+    border-radius: 12px;
+    margin: 6px 0;
+    padding: 10px;
+}
+
+.notification-content {
+    padding: 4px;
+}
+
+.widget-title {
+    background: transparent;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 8px;
+}
+
+.widget-title > button {
+    background: rgba(255, 255, 255, 0.08);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    padding: 6px 12px;
+}
+
+.widget-title > button:hover {
+    background: rgba(119, 205, 215, 0.7);
+    color: black;
+}
+
+/*
+ * BOTONES
+ * */
+
+
+.widget-buttons-grid {
+    padding: 0px;
+    margin: 0;
+    min-height: 0;
+}
+
+.widget-buttons-grid > flowbox {
+    padding: 5px;
+}
+
+.widget-buttons-grid button {
+    min-width: 15px;
+    min-height: 20px;
+    padding: 0;
+    margin: 2px;
+    border-radius: 8px;
+    background-color: #2a2a2a;
+    color: #ffffff;
+    transition: background-color 200ms ease;
+}
+
+.widget-buttons-grid button:hover {
+    background-color: #6fa9aa;
+    color: black;
+}
+
+/* 
+ * MPRIS 
+ * */
+
+.widget-mpris {
+    --mpris-album-art-icon-size: 170px;
+}
+
+
+
+/* Album art */
+.widget-mpris-album-art {
+    -gtk-icon-size: 160px;
+    min-width: 160px;
+    min-height: 160px;
+    border-radius: 16px;
+}
+
+/* Title */
+.widget-mpris-title {
+    color: white;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+/* Artist */
+.widget-mpris-subtitle {
+    color: rgba(255, 255, 255, 0.65);
+    font-size: 12px;
+}
+
+/* Player controls */
+.widget-mpris button {
+    border-radius: 10px;
+    margin: 0 4px;
+    padding: 4px;
+}
+
+.widget-mpris button image {
+    -gtk-icon-size: 20px;
+}

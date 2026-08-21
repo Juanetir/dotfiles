@@ -4,7 +4,6 @@ hyprlock
 hypridle
 waybar
 kitty
-mako
 wofi
 pipewire
 pipewire-pulse

@@ -1,0 +1,304 @@
+import QtQuick
+import Qt5Compat.GraphicalEffects
+Item {
+    property var wallpapers: []
+    property int currentIndex: 0
+
+    property int imageWidth: 200
+    property int imageHeight: 266
+    property int spacing: 20
+    property int animationDuration: 170
+
+    property int direction: 0
+    property bool animating: false
+
+    width: imageWidth * 3 + spacing * 2
+    height: imageHeight + 30
+
+    function previousIndex() {
+        return (currentIndex - 1 + wallpapers.length) % wallpapers.length
+    }
+
+    function nextIndex() {
+        return (currentIndex + 1) % wallpapers.length
+    }
+
+    function move(directionValue) {
+        if (animating || wallpapers.length < 2)
+            return
+
+        direction = directionValue
+        animating = true
+        slideAnimation.start()
+    }
+
+    function finishAnimation() {
+        currentIndex =
+            (currentIndex + direction + wallpapers.length)
+            % wallpapers.length
+
+        previousImage.x = 0
+        currentImage.x = imageWidth + spacing
+        nextImage.x = (imageWidth + spacing) * 2
+
+        previousImage.scale = 1.0
+        previousImage.opacity = 0.45
+
+        currentImage.scale = 1.0
+        currentImage.opacity = 1.0
+
+        nextImage.scale = 0.75
+        nextImage.opacity = 0.45
+
+        previousImageContent.source = wallpapers[previousIndex()]
+        currentImageContent.source = wallpapers[currentIndex]
+        nextImageContent.source = wallpapers[nextIndex()]
+
+        animating = false
+    }
+
+    Item {
+        id: carousel
+
+        anchors.top: parent.top
+        anchors.horizontalCenter: parent.horizontalCenter
+
+        width: parent.width
+        height: imageHeight
+
+        clip: true
+
+        Item {
+        id: previousImage
+
+        width: imageWidth * 0.75
+        height: imageHeight * 0.75
+
+        x: 0
+        y: (imageHeight - height) / 2
+
+        opacity: 0.45
+
+        Rectangle {
+            anchors.fill: parent
+            radius: 14
+            clip: true
+
+            Image {
+                id: previousImageContent
+                anchors.fill: parent
+
+                source: wallpapers.length > 0
+                    ? wallpapers[previousIndex()]
+                    : ""
+
+                fillMode: Image.PreserveAspectCrop
+            }
+        }
+        }
+
+        Item {
+        id: currentImage
+
+        width: imageWidth
+        height: imageHeight
+
+        x: imageWidth + spacing
+        y: 0
+
+        Rectangle {
+            anchors.fill: parent
+            radius: 16
+            clip: true
+
+            Image {
+                id: currentImageContent
+                anchors.fill: parent
+
+                source: wallpapers.length > 0
+                    ? wallpapers[currentIndex]
+                    : ""
+
+                fillMode: Image.PreserveAspectCrop
+            }
+
+            Rectangle {
+                anchors.fill: parent
+                radius: 16
+
+                color: "transparent"
+                border.width: 2
+                border.color: "#22ffaaff"
+            }
+        }
+        }
+
+        Item {
+        id: nextImage
+
+        width: imageWidth * 0.75
+        height: imageHeight * 0.75
+
+        x: (imageWidth + spacing) * 2
+        y: (imageHeight - height) / 2
+
+        opacity: 0.45
+
+        Rectangle {
+            anchors.fill: parent
+            radius: 14
+            clip: true
+
+            Image {
+                id: nextImageContent
+                anchors.fill: parent
+
+                source: wallpapers.length > 0
+                    ? wallpapers[nextIndex()]
+                    : ""
+
+                fillMode: Image.PreserveAspectCrop
+            }
+        }
+        }
+
+       ParallelAnimation {
+            id: slideAnimation
+
+            NumberAnimation {
+                target: previousImage
+                property: "x"
+
+                to: direction === 1
+                    ? -(imageWidth + spacing)
+                    : imageWidth + spacing
+
+                duration: animationDuration
+                easing.type: Easing.OutCubic
+            }
+
+            NumberAnimation {
+                target: previousImage
+                property: "scale"
+
+                to: direction === 1 ? 0.82 : 1.0
+
+                duration: animationDuration
+                easing.type: Easing.OutCubic
+            }
+
+            NumberAnimation {
+                target: previousImage
+                property: "opacity"
+
+                to: direction === 1 ? 0.0 : 0.45
+
+                duration: animationDuration
+                easing.type: Easing.OutCubic
+            }
+
+
+            NumberAnimation {
+                target: currentImage
+                property: "x"
+
+                to: direction === 1
+                    ? 0
+                    : (imageWidth + spacing) * 2
+
+                duration: animationDuration
+                easing.type: Easing.OutCubic
+            }
+
+            NumberAnimation {
+                target: currentImage
+                property: "scale"
+
+                to: 0.75
+
+                duration: animationDuration
+                easing.type: Easing.OutCubic
+            }
+
+            NumberAnimation {
+                target: currentImage
+                property: "opacity"
+
+                to: 0.45
+
+                duration: animationDuration
+                easing.type: Easing.OutCubic
+            }
+
+
+            NumberAnimation {
+                target: nextImage
+                property: "x"
+
+                to: direction === 1
+                    ? imageWidth + spacing
+                    : (imageWidth + spacing) * 3
+
+                duration: animationDuration
+                easing.type: Easing.OutCubic
+            }
+
+            NumberAnimation {
+                target: nextImage
+                property: "scale"
+
+                to: 1.0
+
+                duration: animationDuration
+                easing.type: Easing.OutCubic
+            }
+
+            NumberAnimation {
+                target: nextImage
+                property: "opacity"
+
+                to: 1.0
+
+                duration: animationDuration
+                easing.type: Easing.OutCubic
+            }
+
+            onFinished: {
+                finishAnimation()
+            }
+}    }
+
+    Text {
+        anchors.top: carousel.bottom
+        anchors.topMargin: 10
+        anchors.horizontalCenter: parent.horizontalCenter
+
+        width: imageWidth
+
+       text: wallpapers.length > 0
+            ? wallpapers[currentIndex].split("/").pop()
+              + "  ·  "
+              + (currentIndex + 1)
+              + " / " + wallpapers.length
+            : ""
+
+        horizontalAlignment: Text.AlignHCenter
+        elide: Text.ElideMiddle
+
+        color: "#F2F2F2"
+
+        font.family: "Playpens Sans"
+        font.weight: Font.Bold
+        font.pixelSize: 15
+
+        opacity: 0.95
+
+        layer.enabled: true
+        layer.effect: DropShadow {
+            color: "#00000080"
+            radius: 4
+            samples: 9
+            verticalOffset: 2
+        }
+    }
+}

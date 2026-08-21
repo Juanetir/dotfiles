@@ -6,3 +6,9 @@ unzip
 zip
 bluez
 bluez-utils
+iw
+starship
+wl-clipboard
+cliphist
+swaync
+aerion-bin

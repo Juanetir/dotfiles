@@ -1,0 +1,15 @@
+[SddmGreeterTheme]
+Name=Juan
+Description=Custom SDDM theme from Maya
+Author=Juan GONCALEVS
+Copyright=(c) 2026, Juan GONCALEVS
+License=CC-BY-SA
+Type=sddm-theme
+Version=1.0
+MainScript=Main.qml
+ConfigFile=theme.conf
+TranslationsDirectory=translations
+Email=juanandresgoncalevs06@gmail.com
+Theme-Id=juan
+Theme-API=2.0
+QtVersion=6
