@@ -1,0 +1,9 @@
+[SddmGreeterTheme]
+Name=Kimidori
+Description=Minimal custom SDDM theme
+Author=Juan
+License=MIT
+Type=sddm-theme
+Version=1.0
+MainScript=Main.qml
+QtVersion=6

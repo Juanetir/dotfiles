@@ -1,0 +1,71 @@
+
+{
+    "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/master/doc/json_schema.json",
+    "logo": null,
+    "display": {
+        "separator": " : "
+    },
+
+    "modules": [
+        "break",
+        {
+            "type": "kernel",
+            "key": "\t│ Kernel",
+            "keyColor": "bold_#B4A7FF"
+        },
+        {
+            "type": "command",
+            "key": "\t│ OS Age",
+            "keyColor": "bold_#B4A7FF",
+            "text": "birth_install=$(stat -c %W /); current=$(date +%s); if [ $birth_install -gt 0 ]; then echo $(((current - birth_install) / 86400)) days; else echo unknown; fi"
+        },
+        {
+            "type": "uptime",
+            "key": "\t│ Uptime",
+            "keyColor": "bold_#B4A7FF"
+        },
+        {
+            "type": "wm",
+            "key": "\t│ Hyprland",
+            "keyColor": "bold_#B4A7FF",
+            "format": "hyprland-{version}"
+        },
+        {
+            "type": "cpu",
+            "key": "\t│ CPU",
+            "keyColor": "bold_#B4A7FF",
+            "format": "{name}"
+        },
+        {
+            "type": "gpu",
+            "key": "\t│ GPU",
+            "keyColor": "bold_#B4A7FF",
+            "format": "{name}"
+        },
+        {
+            "type": "memory",
+            "key": "\t│ RAM",
+            "keyColor": "bold_#B4A7FF",
+            "format": "{used} / {total}"
+        },
+        {
+            "type": "disk",
+            "key": "\t│ Disk",
+            "keyColor": "bold_#B4A7FF",
+            "format": "{size-used} / {size-total}"
+        },
+        {
+            "type": "battery",
+            "key": "\t│ Battery",
+            "keyColor": "bold_#B4A7FF",
+            "format": "{capacity}"
+        },
+        {
+            "type": "localip",
+            "key": "\t│ Local IP",
+            "keyColor": "bold_#B4A7FF"
+        },
+        "break"
+    ]
+}
+

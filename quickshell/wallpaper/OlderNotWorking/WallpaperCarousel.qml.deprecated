@@ -4,9 +4,9 @@ Item {
     property var wallpapers: []
     property int currentIndex: 0
 
-    property int imageWidth: 200
-    property int imageHeight: 266
-    property int spacing: 20
+    property int imageWidth: 180
+    property int imageHeight: 220
+    property int spacing: 5
     property int animationDuration: 170
 
     property int direction: 0
@@ -74,7 +74,7 @@ Item {
         width: imageWidth * 0.75
         height: imageHeight * 0.75
 
-        x: 0
+        x: 10
         y: (imageHeight - height) / 2
 
         opacity: 0.45
@@ -103,7 +103,7 @@ Item {
         width: imageWidth
         height: imageHeight
 
-        x: imageWidth + spacing
+        x: imageWidth + spacing - 20
         y: 0
 
         Rectangle {
@@ -184,9 +184,9 @@ Item {
                 to: direction === 1 ? 0.82 : 1.0
 
                 duration: animationDuration
+
                 easing.type: Easing.OutCubic
             }
-
             NumberAnimation {
                 target: previousImage
                 property: "opacity"
@@ -203,7 +203,7 @@ Item {
                 property: "x"
 
                 to: direction === 1
-                    ? 0
+                    ? -20
                     : (imageWidth + spacing) * 2
 
                 duration: animationDuration
@@ -285,10 +285,10 @@ Item {
         horizontalAlignment: Text.AlignHCenter
         elide: Text.ElideMiddle
 
-        color: "#F2F2F2"
+        color: root.palette.color.font
 
-        font.family: "Playpens Sans"
-        font.weight: Font.Bold
+        font.family: "Playpen Sans"
+        font.weight: 500
         font.pixelSize: 15
 
         opacity: 0.95

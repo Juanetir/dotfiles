@@ -7,5 +7,6 @@ matching=fuzzy
 prompt = Search...
 term=kitty
 
-width = 712
+width = 600
 
+colors = colors

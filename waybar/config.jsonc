@@ -13,16 +13,8 @@
     ],
 
     "modules-right": [
-        "group/system",
         "group/controler"
     ],
-    "group/system": {
-        "orientation": "horizontal",
-        "modules": [
-            "cpu",
-            "memory"
-        ]
-    },
     "group/controler": {
         "orientation": "horizontal",
         "modules": [
@@ -30,6 +22,8 @@
             "custom/wifi",
             "battery"
         ]
+
+        // , "on-click": "qs ipc -p ~/dotfiles/quickshell/control-center/shell.qml call control-center toggleQuick"
     },
     "hyprland/workspaces": {
         "format": "{icon}",
@@ -44,28 +38,22 @@
         "format": "󰸉",
         "on-click": "quickshell ipc --path ~/dotfiles/quickshell/wallpaper call wallpaper toggle"
     },
-    "cpu":{
-        "format": "CPU {usage}% "
-    },
-    "memory":
-    {
-        "format": "RAM {percentage}%"
-    },
 "custom/volume": {
     "exec": "~/dotfiles/scripts/volume-icon.sh",
     "return-type": "json",
     "interval": 1,
-    "signal": 8
+    "signal": 8,
+    "on-click": "qs ipc -p ~/dotfiles/quickshell/control-center/shell.qml call control-center toggleQuick"
 },
     "clock": {
         "format": "{:%H:%M}",
         "format-alt": "{:%A %d %B}"
     },
-
 "custom/wifi": {
     "exec": "~/dotfiles/scripts/wifi-icon.sh",
     "return-type": "json",
-    "interval": 5
+    "interval": 5,
+    "on-click": "qs ipc -p ~/dotfiles/quickshell/control-center/shell.qml call control-center toggleQuick"
 },
 "battery": {
     "format": "{icon} {capacity}%",
@@ -85,6 +73,7 @@
     "states": {
         "warning": 30,
         "critical": 15
-    }
+    },
+    "on-click": "qs ipc -p ~/dotfiles/quickshell/control-center/shell.qml call control-center toggleQuick"
 }
 }

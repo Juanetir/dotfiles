@@ -81,13 +81,22 @@
     "buttons-grid": {
       "actions": [
         {
-        "label": "",
+        "label": "󰤆",
         "command" : "systemctl poweroff"
         },
         {
-          "label": "",
+          "label": "",
           "command": "~/dotfiles/scripts/lock.sh"
+        },
+        {
+          "label": "",
+          "command": "systemctl reboot"
+        },
+        {
+          "label": "󰈆",
+          "command": "systemctl suspend"
         }
+
       ]
     }
   }

@@ -1,10 +1,12 @@
+@import "palette.css";
+
 * {
     font-family: "Playpen Sans", "Noto Sans CJK JP", sans-serif;
     font-weight: 500;
 }
 
 .control-center {
-    background: rgba(23, 18, 34, 0.93);
+    background: @Cbackground;
     border-radius: 16px;
     padding: 12px;
 }
@@ -13,41 +15,81 @@
     background: transparent;
 }
 
+/* 
+ * NOTIFICACIONES
+ * */
+
+.notification-row {
+    background: transparent;
+    outline: none;
+    border: none;
+}
+
+.notification-group {
+    background: transparent;
+    outline: none;
+    border: none;
+}
+
+.notification-group:focus {
+    background: transparent;
+    outline: none;
+}
+
+.notification-background {
+    background: transparent;
+    outline: none;
+    border: none;
+    box-shadow: none;
+    padding: 0;
+}
+
 .notification {
-    background: rgba(35, 40, 48, 0.1);
+    background: @Cnotifications;
     border: none;
     border-radius: 12px;
     margin: 6px 0;
     padding: 10px;
 }
+        /*
+        * NOTIFICACIONES - HOVER
+        */   
+    .notification-row .notification-background .notification .notification-default-action {
+        background: transparent;
+        border-radius: 12px;
+    }
 
-.notification-content {
-    padding: 4px;
-}
+    .notification-row .notification-background .notification .notification-default-action:hover {
+        background: transparent;
+    }
+
+/* 
+ * WIDGETS title
+ * */
 
 .widget-title {
     background: transparent;
-    color: white;
+    color: @Cfont;
     font-size: 16px;
     font-weight: bold;
     padding: 8px;
 }
 
 .widget-title > button {
-    background: rgba(255, 255, 255, 0.08);
-    color: white;
+    background: @Cnotifications;
+    color: @Cfont;
     border: none;
     border-radius: 10px;
     padding: 6px 12px;
 }
 
 .widget-title > button:hover {
-    background: rgba(119, 205, 215, 0.7);
+    background: @Cbuttons;
     color: black;
 }
 
 /*
- * BOTONES
+ * WIDGETS botones
  * */
 
 
@@ -61,19 +103,31 @@
     padding: 5px;
 }
 
+.widget-buttons-grid > flowbox > flowboxchild {
+    background: transparent;
+    border: none;
+    outline: none;
+}
+
+.widget-buttons-grid > flowbox > flowboxchild:hover {
+    background: transparent;
+    border: none;
+    outline: none;
+}
+
 .widget-buttons-grid button {
     min-width: 15px;
     min-height: 20px;
     padding: 0;
     margin: 2px;
     border-radius: 8px;
-    background-color: #2a2a2a;
-    color: #ffffff;
+    background-color: @Cnotifications;
+    color: @Cfont;
     transition: background-color 200ms ease;
 }
 
 .widget-buttons-grid button:hover {
-    background-color: #6fa9aa;
+    background-color: @Cbuttons;
     color: black;
 }
 
@@ -97,14 +151,14 @@
 
 /* Title */
 .widget-mpris-title {
-    color: white;
+    color: @Cfont;
     font-size: 13px;
     font-weight: bold;
 }
 
 /* Artist */
 .widget-mpris-subtitle {
-    color: rgba(255, 255, 255, 0.65);
+    color: @Cfont;
     font-size: 12px;
 }
 
@@ -117,4 +171,20 @@
 
 .widget-mpris button image {
     -gtk-icon-size: 20px;
+}
+
+/*
+ * Sliders
+ */
+
+ scale trough {
+    background: @Cbackground;
+}
+
+scale highlight {
+    background: @Cbuttons;
+}
+
+scale slider {
+    background: @Cfont;
 }

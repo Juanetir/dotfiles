@@ -1,12 +1,5 @@
 //
-// [maya] main.qml
-//
-// Main script for the SDDM theme
-//
-// (c) 2016 Sanjeev Premi (spremi@ymail.com)
-//
-// SPDX-License-Identifier: MIT
-//                          (https://spdx.org/licenses/MIT.html)
+// No longer Maya
 //
 
 
@@ -276,7 +269,7 @@ Item {
 
     x: 0
     y: 0
-    width: 780
+    width: 700
     height: parent.height
 
     color: "#22000000"
@@ -376,9 +369,15 @@ Item {
                 Keys.onPressed: {
                     if (event.key === Qt.Key_Return ||
                         event.key === Qt.Key_Enter) {
-
+                        if (!loginActive) {
+                            loginActive = true
+                            maya_password.focus = true
+                        }
+                        else
+                        {
                         maya_password.focus = true
                         event.accepted = true
+                        }
                     }
                     if (event.key === Qt.Key_Escape) {
                         sidePanel.loginActive = false
